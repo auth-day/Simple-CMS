@@ -1,0 +1,9 @@
+<%= link_to("<< Back link", {:action => "index"})%>
+<h2>Create new section</h2>
+
+<%= form_for(:section, :url => {:action => 'create' }) do |f| %>
+
+<%= render(:partial => "form", :locals => {:f => f})%>
+
+<%= submit_tag("Create new page")%>
+<% end %>

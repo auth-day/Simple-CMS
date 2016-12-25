@@ -1,0 +1,29 @@
+<% @page_title = "Pages"%>
+
+
+<h2>Pages</h2>
+<%= link_to("Add New Page", {:action => 'new'})%>
+<table border="1">
+  <tr>
+    <th>Name</th>
+    <th>Permalink</th>
+    <th>Position</th>
+    <th>Visible</th>
+    <th>Actions</th>
+  </tr>
+<% @pages.each do |p| %>
+<tr>
+<td><%= p.name %></td>
+<td><%= p.permalink %></td>
+<td><%= p.position %></td>
+<td><%= status_tag(p.visible) %></td>
+<td>
+<%= link_to("Show", {:action => "show", :id => p.id}) %>
+<%= link_to("Edit", {:action => 'edit', :id => p.id}) %>
+<%= link_to("Delete", {:action => "delete", :id => p.id}) %>
+</td>
+</tr>
+<% end %>
+</table>
+<%= link_to("<< Back to Sections", {:controller => 'section_controller', :action => 'index'})%>
+<%= link_to("Edit Subjects", {:controller => 'subjects', :action => 'index'})%>

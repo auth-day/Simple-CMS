@@ -1,0 +1,16 @@
+<%= link_to("Back link", {:action => 'index'})%>
+<h2>Create Page</h2>
+
+<h2>Available subject_id's</h2>
+<% @subjects.each do |s| %>
+<%= s.id %>
+<%= p "|" %>
+<% end %>
+<p></p>
+
+<%= form_for(:page, :url => {:action => 'create' }) do |f| %>
+
+  <%= render(:partial => "form", :locals => {:f => f})%>
+  
+<%= submit_tag("Create page")%>
+<% end %>
