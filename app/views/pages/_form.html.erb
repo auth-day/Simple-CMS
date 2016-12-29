@@ -1,7 +1,9 @@
+<%= error_messages_for(@page) %>
+
 <table summary="Page form fields">
   <tr>
     <th><%= f.label(:subject_id, "Subject ID")%></th>
-    <td><%= f.text_field(:subject_id) %></td>
+    <td><%= f.select(:subject_id, Subject.all.map {|x| [x.name, x.id]}) %></td>
   </tr>
   <tr>
     <th><%= f.label(:name) %></th>
@@ -9,7 +11,7 @@
   </tr>
   <tr>
     <th><%= f.label(:position) %></th>
-    <td><%= f.text_field(:position) %></td>
+    <td><%= f.select(:position, 1..@subject_count) %></td>
   </tr>
   <tr>
     <th><%= f.label(:visible) %></th>

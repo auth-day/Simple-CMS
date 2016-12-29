@@ -2,7 +2,7 @@ class CreatePages < ActiveRecord::Migration[5.0]
   def change
     create_table :pages do |t|
       t.integer "subject_id"
-      t.string "name"
+      t.string "name", :limit => 30
       t.string "permalink"
       t.integer "position"
       t.boolean "visible", :default => false
@@ -13,6 +13,6 @@ class CreatePages < ActiveRecord::Migration[5.0]
   end
 
   def down
-    drop_table :pages 
+    drop_table :pages
   end
 end

@@ -5,6 +5,7 @@
 <%= link_to("Add New Page", {:action => 'new'})%>
 <table border="1">
   <tr>
+    <th>Author</th>
     <th>Name</th>
     <th>Permalink</th>
     <th>Position</th>
@@ -13,6 +14,7 @@
   </tr>
 <% @pages.each do |p| %>
 <tr>
+<td><%= Subject.find(p.subject_id).name %></td>
 <td><%= p.name %></td>
 <td><%= p.permalink %></td>
 <td><%= p.position %></td>

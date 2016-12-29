@@ -8,6 +8,7 @@
 <div>
   <table border="1">
   <tr>
+    <th>Author</th>
     <th>Name</th>
     <th>Position</th>
     <th>Visible</th>
@@ -16,6 +17,7 @@
   </tr>
   <tr>
     <% @sections.each do |x| %>
+    <td><%= Page.find(x.page_id).name %></td>
     <td><%= x.name %></td>
     <td><%= x.position %></td>
     <td><%= status_tag(x.visible) %></td>

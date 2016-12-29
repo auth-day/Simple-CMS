@@ -1,6 +1,7 @@
 class PagesController< ApplicationController
   layout "admin"
 
+  before_action :confirm_logged_in
   def index
     @pages = Page.all
   end
@@ -11,11 +12,13 @@ class PagesController< ApplicationController
 
   def edit
     @page = Page.find(params[:id])
+    @subject_count = Page.count
   end
 
   def new
     @subjects = Subject.all
     @page = Page.new
+    @subject_count = Page.count + 1
   end
 
   def create
@@ -24,6 +27,8 @@ class PagesController< ApplicationController
       flash[:notice] = "Page created successfully"
       redirect_to(:action => 'index')
     else
+      @subjects = Subject.all
+      @subject_count = Page.count
       render('new')
     end
     #redirect_to(:action => 'index')
@@ -37,6 +42,7 @@ class PagesController< ApplicationController
       flash[:notice] = "Page updated successfully"
       redirect_to(:action => "index")
     else
+      @subject_count = Page.count
       render(:action => "edit")
     end
   end

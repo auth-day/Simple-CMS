@@ -1,6 +1,8 @@
 class SectionControllerController < ApplicationController
   layout "admin"
 
+  before_action :confirm_logged_in
+  
   def index
     @sections = Section.all
   end
@@ -11,6 +13,7 @@ class SectionControllerController < ApplicationController
 
   def new
     @section = Section.new
+    @sections_count = Section.count + 1
   end
 
   def create
@@ -25,6 +28,7 @@ class SectionControllerController < ApplicationController
 
   def edit
     @section = Section.find(params[:id])
+    @sections_count = Section.count
   end
 
   def update
@@ -34,6 +38,7 @@ class SectionControllerController < ApplicationController
       flash[:notice] = "Section updated successfully"
       redirect_to(:action => 'index')
     else
+      @sections_count = Section.count
       render('edit')
     end
   end

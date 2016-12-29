@@ -1,7 +1,9 @@
+<%= error_messages_for(@section) %>
+
 <table>
   <tr>
-    <th><%= f.label(:section_id, "Section ID") %></th>
-<td><%= f.text_field(:page_id)%></td>
+    <th><%= f.label(:section_id, "Author") %></th>
+<td><%= f.select(:page_id, Page.all.map {|x| [x.name, x.id]})%></td>
 </tr>
 <tr>
   <th><%= f.label(:name) %></th>
@@ -9,7 +11,7 @@
 </tr>
 <tr>
   <th><%= f.label(:position) %></th>
-<td><%= f.text_field(:position)%></td>
+<td><%= f.select(:position, 1..@sections_count)%></td>
 </tr>
 <tr>
   <th><%= f.label(:visible) %></th>
